@@ -71,7 +71,7 @@ const ProductList = () => {
             <img
               src={
                 typeof record.image === "string"
-                  ? `http://localhost:8080/uploads/${record?.image?.toString()}`
+                  ? `https://jsshop.onrender.com/uploads/${record?.image?.toString()}`
                   : ""
               }
               alt="product image"

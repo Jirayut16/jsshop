@@ -80,7 +80,7 @@ const SpecialDeal = () => {
               <div className="flex flex-col w-full h-full group lg:border lg:border-gray-300">
                 <div className="bg-white w-full h-2/3 ">
                   <img
-                    src={`http://localhost:8080/uploads/${item?.file?.toString()}`}
+                    src={`https://jsshop.onrender.com/uploads/${item?.file?.toString()}`}
                     alt="product picture"
                     className="w-full h-full object-cover"
                   />

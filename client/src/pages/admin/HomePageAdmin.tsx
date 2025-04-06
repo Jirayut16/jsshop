@@ -214,7 +214,7 @@ const HomePageAdmin = () => {
                           <img
                             src={
                               typeof item.image === "string"
-                                ? `http://localhost:8080/uploads/${item?.image?.toString()}`
+                                ? `https://jsshop.onrender.com/uploads/${item?.image?.toString()}`
                                 : ""
                             }
                             alt="product image"

@@ -150,7 +150,7 @@ const Order = () => {
                                       <img
                                         src={
                                           typeof item.image === "string"
-                                            ? `http://localhost:8080/uploads/${item?.image?.toString()}`
+                                            ? `https://jsshop.onrender.com/uploads/${item?.image?.toString()}`
                                             : ""
                                         }
                                         alt="product image"
@@ -200,7 +200,7 @@ const Order = () => {
                                     <img
                                       src={
                                         typeof order.image === "string"
-                                          ? `http://localhost:8080/uploads/${order?.image?.toString()}`
+                                          ? `https://jsshop.onrender.com/uploads/${order?.image?.toString()}`
                                           : ""
                                       }
                                       alt="product image"

@@ -152,7 +152,7 @@ const AllProduct = () => {
                   >
                     <div className="w-full h-[70%] ">
                       <img
-                        src={`http://localhost:8080/uploads/${product?.file?.toString()}`}
+                        src={`https://jsshop.onrender.com/uploads/${product?.file?.toString()}`}
                         alt="product image"
                         className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out "
                       />

@@ -185,7 +185,7 @@ export default function Login() {
               <div className="flex flex-col justify-center items-center">
                 <div className="w-24 h-24 rounded-full overflow-hidden">
                   <img
-                    src="../../../public/account-security.svg"
+                    src="account-security.svg"
                     alt="login"
                     className="w-full h-full object-cover"
                   />

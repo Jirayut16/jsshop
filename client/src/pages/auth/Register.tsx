@@ -109,7 +109,7 @@ export default function Register() {
               <div className="flex flex-col justify-center items-center">
                 <div className="w-24 h-24 rounded-full overflow-hidden">
                   <img
-                    src="../../../public/user.svg"
+                    src="user.svg"
                     alt="login"
                     className="w-full h-full object-cover"
                   />
