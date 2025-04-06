@@ -85,7 +85,7 @@ const Order = () => {
               items={Array.from({ length: 3 }, (_, index) => {
                 const key = String(index + 1);
                 const label =
-                  key === "1" ? "All" : key === "2" ? "Completed" : "Pending";
+                  key === "1" ? "All" : key === "2" ? "Completed" : "Cancelled";
                 const itemToShow =
                   key === "1"
                     ? orders
@@ -134,7 +134,7 @@ const Order = () => {
                                     </span>
                                   ) : (
                                     <span className="text-red-500">
-                                      processing
+                                      cancelled
                                     </span>
                                   )}
                                 </p>
