@@ -34,9 +34,9 @@ export const checkout = async (req, res) => {
             product_data: {
               name: orderIdToPayment.item.map((item) => item.name).join(", "),
               description:
-                "Thank you for your order with us please enter '4242 4242 4242 4242' as the card number",
+                "Thank you for your order with us please enter 4242 4242 4242 4242 as the card number",
             },
-            unit_amount: orderIdToPayment.totalPrice * 100,
+            unit_amount: Math.round(orderIdToPayment.totalPrice * 100),
           },
         },
       ],
