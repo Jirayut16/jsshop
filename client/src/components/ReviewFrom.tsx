@@ -168,7 +168,6 @@ const ReviewFrom = () => {
   const showEditModal = (review: ReviewOneProductType, isEdit: boolean) => {
     document.body.style.overflow = "hidden";
     document.body.style.opacity = "0.5";
-    document.body.style.backgroundColor = "black";
     console.log("review", review);
     setEditing(isEdit ? true : false);
     setSelectedReview({

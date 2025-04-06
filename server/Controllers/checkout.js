@@ -40,7 +40,7 @@ export const checkout = async (req, res) => {
         },
       ],
       mode: "payment",
-      return_url: `http://localhost:5173/checkout/complete/{CHECKOUT_SESSION_ID}/${orderid}`,
+      return_url: `https://jsshop.vercel.app/checkout/complete/{CHECKOUT_SESSION_ID}/${orderid}`,
     });
 
     const getCustomer = await stripe.customers.list();
