@@ -153,7 +153,7 @@ const ProductDetail = () => {
             {/* Add to cart mobile */}
             {user.user.role === "admin" ? (
               <Link to={`/admin/productlist`}>
-                <button className="flex sm:hidden justify-center items-center gap-2 bg-button shadow-md text-white w-full rounded-md py-1  text-sm cursor-pointer hover:bg-red-700 transition duration-300 ease-in-out">
+                <button className="flex sm:hidden justify-center items-center gap-2 bg-button shadow-md text-white w-full rounded-md py-1 px-2 text-sm max-[400px]:text-xs cursor-pointer hover:bg-red-700 transition duration-300 ease-in-out">
                   Manage item
                   <MdLockOutline className="text-xl" />
                 </button>
@@ -170,7 +170,7 @@ const ProductDetail = () => {
                   };
                   handleAddToCart(productToAdd);
                 }}
-                className="flex sm:hidden justify-center items-center gap-2 bg-button shadow-md text-white w-full rounded-md py-1  text-sm max-[400px]:text-xs cursor-pointer hover:bg-red-700 transition duration-300 ease-in-out"
+                className="flex sm:hidden justify-center items-center gap-2 bg-button shadow-md text-white w-full rounded-md py-1 px-2 text-sm max-[400px]:text-xs cursor-pointer hover:bg-red-700 transition duration-300 ease-in-out"
               >
                 Add to cart
                 <BsCart4 size={20} className="text-white " />
@@ -223,7 +223,7 @@ const ProductDetail = () => {
                 ))}
               </p>
             </div>
-            <div className="flex flex-row items-center gap-2 sm:gap-16">
+            <div className="flex flex-col md:flex-row md:items-center gap-2 sm:gap-16">
               <p className="flex flex-row items-center gap-2 text-xs sm:text-lg">
                 Color:
                 <span className="font-extralight">{productDetail.color} |</span>

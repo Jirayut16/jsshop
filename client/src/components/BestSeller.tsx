@@ -166,7 +166,7 @@ const BestSeller = () => {
                 </p>
                 {user.user.role === "admin" ? (
                   <Link to={`/admin/productlist`}>
-                    <button className="flex flex-row items-center gap-2 bg-primary text-white px-4 py-1 cursor-pointer hover:bg-button transition duration-300 ease-in-out">
+                    <button className="flex flex-row items-center gap-2 rounded-sm bg-primary text-white px-4 py-1 cursor-pointer hover:bg-button transition duration-300 ease-in-out">
                       Manage item
                       <MdLockOutline className="text-xl" />
                     </button>

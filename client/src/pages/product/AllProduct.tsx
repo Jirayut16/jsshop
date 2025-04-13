@@ -150,13 +150,21 @@ const AllProduct = () => {
                     key={index}
                     className="border-2 border-gray-300 dark:border-none  w-full h-[50vh] lg:h-[60vh] rounded-md overflow-hidden cursor-pointer shadow-lg relative"
                   >
-                    <div className="w-full h-[70%] ">
-                      <img
-                        src={`https://jsshop.onrender.com/uploads/${product?.file?.toString()}`}
-                        alt="product image"
-                        className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out "
-                      />
-                    </div>
+                    <Link
+                      to={
+                        product.tag.includes("Sale")
+                          ? `/productdiscount/${product._id}`
+                          : `/product/${product._id}`
+                      }
+                    >
+                      <div className="w-full h-[70%] ">
+                        <img
+                          src={`https://jsshop.onrender.com/uploads/${product?.file?.toString()}`}
+                          alt="product image"
+                          className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out "
+                        />
+                      </div>
+                    </Link>
                     {/* detail */}
                     <div className="flex flex-col gap-1 py-3 px-2 h-full dark:bg-soft-dark dark:text-text-dark">
                       <p className="text-xs max-[400px]:text-[10px] lg:text-sm font-medium">
@@ -182,7 +190,7 @@ const AllProduct = () => {
                       <div className="flex flex-row items-center justify-center gap-2 mt-2">
                         {user.user.role === "admin" ? (
                           <Link to={`/admin/productlist`} className="w-full">
-                            <div className="w-full h-full p-2 rounded-md gap-2 flex items-center justify-center bg-accent dark:bg-accent-dark text-white hover:bg-button  transition-all duration-300 ease-in-out">
+                            <div className="w-full h-full p-2 text-xs sm:text-base rounded-md gap-2 flex items-center justify-center bg-accent dark:bg-accent-dark text-white hover:bg-button  transition-all duration-300 ease-in-out">
                               Manage product
                               <MdLockOutline size={26} />
                             </div>
@@ -199,7 +207,7 @@ const AllProduct = () => {
                               };
                               handleAddToCart(productToAdd);
                             }}
-                            className="w-full h-full p-2 rounded-md gap-2 flex items-center justify-center bg-accent dark:bg-accent-dark text-white hover:bg-button  transition-all duration-300 ease-in-out"
+                            className="w-full h-full p-2 text-xs sm:text-base rounded-md gap-2 flex items-center justify-center bg-accent dark:bg-accent-dark text-white hover:bg-button  transition-all duration-300 ease-in-out"
                           >
                             Add to cart
                             <TiShoppingCart size={26} />

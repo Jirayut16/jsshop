@@ -28,7 +28,9 @@ const NewArrive = () => {
   const getDataProduct = async () => {
     try {
       const response = await getData();
-      const selectData = response.data.slice(0, 4);
+      const selectData = response.data.filter((item: FormProductType) =>
+        item.tag.includes("New Arrival")
+      );
       setData(selectData);
     } catch (error) {
       console.log(error);
@@ -176,7 +178,7 @@ const NewArrive = () => {
                     </p>
                     {user.user.role === "admin" ? (
                       <Link to={`/admin/productlist`}>
-                        <button className="flex flex-row items-center gap-2 bg-primary text-white px-4 py-1 cursor-pointer hover:bg-button transition duration-300 ease-in-out">
+                        <button className="flex flex-row items-center gap-2 rounded-sm bg-primary text-white px-4 py-1 cursor-pointer hover:bg-button transition duration-300 ease-in-out">
                           Manage item
                           <MdLockOutline className="text-xl" />
                         </button>
@@ -193,7 +195,7 @@ const NewArrive = () => {
                           };
                           handleAddToCart(productToAdd);
                         }}
-                        className="flex flex-row items-center gap-2 bg-primary dark:bg-accent-dark text-white px-4 py-1 cursor-pointer rounded-sm hover:bg-button transition duration-300 ease-in-out"
+                        className="flex flex-row items-center gap-2  bg-primary dark:bg-accent-dark text-white px-4 py-1 cursor-pointer rounded-sm hover:bg-button transition duration-300 ease-in-out"
                       >
                         Add to cart
                         <BsCart4 className="text-xl" />

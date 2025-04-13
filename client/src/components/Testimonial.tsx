@@ -5,12 +5,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 const Testimonial = () => {
   return (
     <div className="flex flex-col gap-2 my-16">
-      <Marquee
-        speed={50}
-        pauseOnHover={true}
-        gradient={true}
-        gradientWidth={30}
-      >
+      <Marquee speed={50} pauseOnHover={true}>
         <div className="flex flex-row gap-2 p-1 justify-between items-center">
           {testimonialLists.map((item, index) => (
             <div
@@ -43,13 +38,7 @@ const Testimonial = () => {
           What's our customer say ?
         </p>
       </div>
-      <Marquee
-        speed={50}
-        pauseOnHover={true}
-        gradient={true}
-        gradientWidth={30}
-        direction="right"
-      >
+      <Marquee speed={50} pauseOnHover={true} direction="right">
         <div className="flex flex-row gap-2 p-1 justify-between items-center">
           {testimonialLists.map((item, index) => (
             <div
