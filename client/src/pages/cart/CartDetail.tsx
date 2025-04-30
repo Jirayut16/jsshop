@@ -48,6 +48,7 @@ const CartDetail = () => {
       includedTax: formatCurrency(includedTax),
     };
   };
+  console.log("cart page", cart);
 
   return (
     <>
@@ -103,12 +104,9 @@ const CartDetail = () => {
                 <div className="hidden lg:block col-span-6">
                   <div className="flex items-center">
                     <img
-                      src={
-                        typeof item.image === "string"
-                          ? `https://jsshop.onrender.com/uploads/${item?.image?.toString()}`
-                          : ""
-                      }
+                      src={typeof item.image === "string" ? item.image : ""}
                       alt={item.name}
+                      loading="lazy"
                       className="w-20 h-20 object-cover rounded-md mr-4"
                     />
                     <div>
@@ -171,12 +169,9 @@ const CartDetail = () => {
                   <div className="flex items-center gap-2 ">
                     <div className="w-20 h-16">
                       <img
-                        src={
-                          typeof item.image === "string"
-                            ? `https://jsshop.onrender.com/uploads/${item?.image?.toString()}`
-                            : ""
-                        }
+                        src={typeof item.image === "string" ? item.image : ""}
                         alt={item.name}
+                        loading="lazy"
                         className="w-full h-full object-cover rounded-md mr-4"
                       />
                     </div>
@@ -243,7 +238,12 @@ const CartDetail = () => {
         ) : (
           <div className="bg-white dark:bg-soft-dark p-12 text-center rounded-md shadow-sm">
             <div className="flex justify-center mb-4">
-              <img src="/empty-cart.png" alt="" className="w-24 h-24" />
+              <img
+                src="/empty-cart.png"
+                alt="empty cart"
+                loading="lazy"
+                className="w-24 h-24"
+              />
             </div>
             <h2 className="text-2xl font-medium text-gray-900 dark:text-text-dark mb-2">
               Your cart is empty

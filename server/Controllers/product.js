@@ -28,8 +28,11 @@ export const create = async (req, res) => {
     var data = req.body;
     console.log("Create product detail", req.body);
 
+    if (!req.file) {
+      return res.status(400).json({ error: "No file uploaded" });
+    }
     if (req.file) {
-      data.file = req.file.filename;
+      data.file = req.file.path;
     }
     if (data.discountPercent >= 100) {
       return res.status(400).json({ error: "Discount must be less than 100%" });
@@ -48,7 +51,11 @@ export const create = async (req, res) => {
     }
 
     const products = await Product(data).save();
-    return res.status(201).send(products);
+    return res.status(201).json({
+      message: "Product created successfully",
+      newProduct: products,
+      imageUrl: req.file.path,
+    });
   } catch (err) {
     console.log(err);
     res.status(400).json({ error: err.message });

@@ -69,12 +69,9 @@ const ProductList = () => {
         <div className="flex items-center justify-center w-full h-full">
           <div className="w-16 h-16 shadow-md rounded-md overflow-hidden">
             <img
-              src={
-                typeof record.image === "string"
-                  ? `https://jsshop.onrender.com/uploads/${record?.image?.toString()}`
-                  : ""
-              }
+              src={typeof record.image === "string" ? record.image : ""}
               alt="product image"
+              loading="lazy"
               className="w-full h-full object-cover"
             />
           </div>

@@ -159,8 +159,9 @@ const AllProduct = () => {
                     >
                       <div className="w-full h-[70%] ">
                         <img
-                          src={`https://jsshop.onrender.com/uploads/${product?.file?.toString()}`}
+                          src={product.file}
                           alt="product image"
+                          loading="lazy"
                           className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out "
                         />
                       </div>

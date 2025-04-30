@@ -188,12 +188,9 @@ const ConfirmOrder = () => {
                     <td className="p-2">
                       <div className=" border border-gray-400 rounded-md overflow-hidden w-12 h-16">
                         <img
-                          src={
-                            typeof item.image === "string"
-                              ? `https://jsshop.onrender.com/uploads/${item?.image?.toString()}`
-                              : ""
-                          }
+                          src={typeof item.image === "string" ? item.image : ""}
                           alt="product image"
+                          loading="lazy"
                           className="w-full h-full object-cover "
                         />
                       </div>
@@ -224,11 +221,7 @@ const ConfirmOrder = () => {
                     <div className="flex gap-2 mr-4">
                       <div className="w-12 h-12">
                         <img
-                          src={
-                            typeof item.image === "string"
-                              ? `https://jsshop.onrender.com/uploads/${item?.image?.toString()}`
-                              : ""
-                          }
+                          src={typeof item.image === "string" ? item.image : ""}
                           alt="product image"
                           className="w-full h-full object-cover rounded-md "
                         />

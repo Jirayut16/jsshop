@@ -51,6 +51,7 @@ const NewArrive = () => {
     newHover[index] = false;
     setHover(newHover);
   };
+  console.log("data", data);
 
   return (
     <div className="container mx-auto relative px-12 lg:px-10 xl:px-0">
@@ -119,7 +120,7 @@ const NewArrive = () => {
                 >
                   <Link to={`/product/${item._id}`} key={index}>
                     <img
-                      src={`https://jsshop.onrender.com/uploads/${item?.file?.toString()}`}
+                      src={item?.file}
                       alt="best seller product"
                       onMouseEnter={() => hoverImageToChange(index)}
                       onMouseLeave={() => hoverImageToChangeLeave(index)}
@@ -133,7 +134,8 @@ const NewArrive = () => {
                     />
                     <img
                       src={hoverImage[index]?.image}
-                      alt=""
+                      alt="newarrive product"
+                      loading="lazy"
                       onMouseEnter={() => hoverImageToChange(index)}
                       onMouseLeave={() => hoverImageToChangeLeave(index)}
                       id="hover"

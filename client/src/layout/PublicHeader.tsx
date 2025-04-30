@@ -55,7 +55,11 @@ const PublicHeader = ({ classname }: { classname: string }) => {
           {/* logo */}
           <Link to={"/"}>
             <div className="w-24 h-12 md:w-36 md:h-16 flex justify-center items-center rounded-md ">
-              <img src="/logo3.webp" alt="" className="h-full object-cover" />
+              <img
+                src="/logo3.webp"
+                alt="logo"
+                className="h-full object-cover"
+              />
             </div>
           </Link>
 

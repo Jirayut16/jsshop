@@ -80,9 +80,10 @@ const SpecialDeal = () => {
               <div className="flex flex-col w-full h-full group lg:border lg:border-gray-300">
                 <div className="bg-white w-full h-2/3 ">
                   <img
-                    src={`https://jsshop.onrender.com/uploads/${item?.file?.toString()}`}
+                    src={item?.file}
                     alt="product picture"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                   <div className="w-20 h-16 flex justify-center items-center bg-button text-white text-lg font-semibold absolute top-0 right-0">
                     {item.discountPercent}%

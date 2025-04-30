@@ -28,7 +28,8 @@ const GenderCate = () => {
             <div key={index} className="w-full h-full  group relative">
               <img
                 src={gender.img}
-                alt=""
+                alt="gender"
+                loading="lazy"
                 className="w-full h-full object-cover rounded-sm sm:rounded-none"
               />
               <div className="absolute inset-0 rounded-sm sm:rounded-none opacity-0 bg-black scale-80 flex items-center justify-center text-white font-light text-4xl group-hover:scale-100 group-hover:opacity-100 transition-all duration-400 ease-in-out">

@@ -3,7 +3,7 @@ export type FormProductType = {
   detail: string;
   price: number;
   discountPercent: number;
-  file?: File | string; // file สามารถเป็น File หรือ string (path)
+  file?: string | File; // file สามารถเป็น File หรือ string (path)
   category: string[];
   gender: string;
   size: string;
@@ -19,7 +19,7 @@ export type FormEditProps = {
   detail: string;
   price: string;
   discountPercent: string;
-  file?: File | string; // file สามารถเป็น File หรือ string (path)
+  file?: string | File; // file สามารถเป็น File หรือ string (path)
   category: string[];
   gender: string;
   size: string;

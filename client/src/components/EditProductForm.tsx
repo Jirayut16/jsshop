@@ -81,7 +81,7 @@ const EditProductForm = () => {
   const handleFileChange = (files: UploadFile[]) => {
     console.log(files);
     setFileList(files);
-    setData({ ...data, file: files[0].originFileObj });
+    setData({ ...data, file: files[0].originFileObj as File });
   };
 
   const handleCategoryChange = (

@@ -107,7 +107,7 @@ const BestSeller = () => {
             >
               <Link to={`/product/${item._id}`} key={index}>
                 <img
-                  src={`https://jsshop.onrender.com/uploads/${item?.file?.toString()}`}
+                  src={item?.file}
                   alt="best seller product"
                   onMouseEnter={() => hoverImageToChange(index)}
                   onMouseLeave={() => hoverImageToChangeLeave(index)}
@@ -121,7 +121,7 @@ const BestSeller = () => {
                 />
                 <img
                   src={hoverImage[index]?.image}
-                  alt=""
+                  alt="hover image"
                   onMouseEnter={() => hoverImageToChange(index)}
                   onMouseLeave={() => hoverImageToChangeLeave(index)}
                   id="hover"

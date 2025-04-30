@@ -213,9 +213,7 @@ const HomePageAdmin = () => {
                         <div className=" border border-gray-300 rounded-md overflow-hidden w-12 h-12">
                           <img
                             src={
-                              typeof item.image === "string"
-                                ? `https://jsshop.onrender.com/uploads/${item?.image?.toString()}`
-                                : ""
+                              typeof item.image === "string" ? item.image : ""
                             }
                             alt="product image"
                             className="w-full h-full object-cover "

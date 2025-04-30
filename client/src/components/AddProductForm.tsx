@@ -78,11 +78,11 @@ const AddProductForm = () => {
   console.log(form);
 
   const handleFileChange = (files: UploadFile[]) => {
-    console.log(files);
+    console.log("file", files);
     setFileList(files);
-    setForm({ ...form, file: files[0].originFileObj });
+    setForm({ ...form, file: files[0].originFileObj as File });
   };
-  console.log(fileList);
+  console.log("fileList", fileList);
 
   const handleClearForm = () => {
     window.location.reload();

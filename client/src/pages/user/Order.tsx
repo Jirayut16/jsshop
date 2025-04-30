@@ -150,10 +150,11 @@ const Order = () => {
                                       <img
                                         src={
                                           typeof item.image === "string"
-                                            ? `https://jsshop.onrender.com/uploads/${item?.image?.toString()}`
+                                            ? item.image
                                             : ""
                                         }
                                         alt="product image"
+                                        loading="lazy"
                                         className="w-full h-full object-cover "
                                       />
                                     </div>
@@ -200,10 +201,11 @@ const Order = () => {
                                     <img
                                       src={
                                         typeof order.image === "string"
-                                          ? `https://jsshop.onrender.com/uploads/${order?.image?.toString()}`
+                                          ? order.image
                                           : ""
                                       }
                                       alt="product image"
+                                      loading="lazy"
                                       className="w-full h-full object-cover "
                                     />
                                   </div>
