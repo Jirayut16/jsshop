@@ -96,7 +96,11 @@ const ProductDetail = () => {
           <div className="w-1/3 sm:w-1/2 flex flex-col sm:flex-row gap-4 sm:gap-0 justify-start lg:justify-center items-start lg:items-center">
             <div className="w-full h-[25vh] sm:h-[80vh] flex justify-center items-center">
               <img
-                src={productDetail.file}
+                src={
+                  typeof productDetail?.file === "string"
+                    ? productDetail.file
+                    : ""
+                }
                 alt="product image"
                 loading="lazy"
                 className="h-full object-cover rounded-sm"

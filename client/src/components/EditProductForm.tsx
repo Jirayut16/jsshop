@@ -30,7 +30,7 @@ const EditProductForm = () => {
     detail: "",
     price: "",
     discountPercent: "",
-    file: "",
+    file: undefined,
     category: [],
     gender: "",
     size: "",
@@ -81,7 +81,11 @@ const EditProductForm = () => {
   const handleFileChange = (files: UploadFile[]) => {
     console.log(files);
     setFileList(files);
-    setData({ ...data, file: files[0].originFileObj as File });
+    if (files.length > 0 && files[0].originFileObj) {
+      setData({ ...data, file: files[0].originFileObj as File });
+    } else {
+      setData({ ...data, file: undefined });
+    }
   };
 
   const handleCategoryChange = (

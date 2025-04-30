@@ -159,7 +159,11 @@ const AllProduct = () => {
                     >
                       <div className="w-full h-[70%] ">
                         <img
-                          src={product.file}
+                          src={
+                            typeof product?.file === "string"
+                              ? product.file
+                              : ""
+                          }
                           alt="product image"
                           loading="lazy"
                           className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out "

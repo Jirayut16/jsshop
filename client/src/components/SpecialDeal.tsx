@@ -80,7 +80,7 @@ const SpecialDeal = () => {
               <div className="flex flex-col w-full h-full group lg:border lg:border-gray-300">
                 <div className="bg-white w-full h-2/3 ">
                   <img
-                    src={item?.file}
+                    src={typeof item?.file === "string" ? item.file : ""}
                     alt="product picture"
                     className="w-full h-full object-cover"
                     loading="lazy"

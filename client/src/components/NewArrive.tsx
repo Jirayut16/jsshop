@@ -120,7 +120,7 @@ const NewArrive = () => {
                 >
                   <Link to={`/product/${item._id}`} key={index}>
                     <img
-                      src={item?.file}
+                      src={typeof item?.file === "string" ? item.file : ""}
                       alt="best seller product"
                       onMouseEnter={() => hoverImageToChange(index)}
                       onMouseLeave={() => hoverImageToChangeLeave(index)}
