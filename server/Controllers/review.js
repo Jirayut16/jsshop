@@ -42,18 +42,15 @@ export const createReview = async (req, res) => {
   try {
     var { productId, name, rating, comment, date } = req.body;
     rating = Number(rating);
-    // console.log("req.body", req.body);
 
     if (!productId || !name || !rating || !comment)
       return res.status(400).json({ message: "Missing required fields" });
-    // console.log("req review", req.body);
 
     let review = await Review.findOne({ productId }).populate(
       "productId",
       "name"
     );
     //รีวิวของสินค้านั้นๆทั้งหมดใน array
-    console.log("reviewcreate", review);
 
     if (!review) {
       // ถ้ายังไม่มีรีวิวของสินค้านี้ ให้สร้างใหม่
@@ -74,7 +71,6 @@ export const createReview = async (req, res) => {
 export const deleteReview = async (req, res) => {
   try {
     const { id, reviewId } = req.params;
-    console.log("req.params", req.params);
 
     const getReviewToRemove = await Review.findOneAndUpdate(
       { productId: id },
@@ -95,8 +91,6 @@ export const updateReview = async (req, res) => {
   try {
     const { id, reviewId } = req.params;
     const { rating, comment } = req.body;
-    console.log("req.params edit", req.params);
-    console.log("req.body edit", req.body);
 
     const updatedReview = await Review.findOneAndUpdate(
       { productId: id, "reviews._id": reviewId },

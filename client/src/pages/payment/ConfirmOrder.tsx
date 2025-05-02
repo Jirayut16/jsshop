@@ -59,17 +59,12 @@ const ConfirmOrder = () => {
       [name]: value,
     }));
   };
-  console.log("formValues", formValues);
-  console.log("cart confirm", cart);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
       const res = await submitOrder(formValues, cart.cartId);
-      console.log("resconfirm", res.data);
-      // console.log("latest", res?.data?.latestOrder?._id);
-      // console.log("order", res?.data?.order?._id);
       await new Promise((resolve) => setTimeout(resolve, 3000)).then(() => {
         navigate(
           `/checkout/${res?.data?.order?._id}/${res?.data?.latestOrder?._id}`

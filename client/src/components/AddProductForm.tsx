@@ -23,8 +23,10 @@ import { VscClearAll } from "react-icons/vsc";
 import { IoBagAddOutline } from "react-icons/io5";
 import { Bounce, toast } from "react-toastify";
 import { AxiosError } from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddProductForm = () => {
+  const redirect = useNavigate();
   const [form, setForm] = useState<FormProductType>({
     name: "",
     detail: "",
@@ -75,10 +77,8 @@ const AddProductForm = () => {
       }));
     }
   };
-  console.log(form);
 
   const handleFileChange = (files: UploadFile[]) => {
-    console.log("file", files);
     setFileList(files);
     if (files.length > 0 && files[0].originFileObj) {
       setForm({ ...form, file: files[0].originFileObj as File });
@@ -86,7 +86,6 @@ const AddProductForm = () => {
       setForm({ ...form, file: undefined });
     }
   };
-  console.log("fileList", fileList);
 
   const handleClearForm = () => {
     window.location.reload();
@@ -110,7 +109,7 @@ const AddProductForm = () => {
       const res = await create(formData);
       console.log("Created:", res.data);
 
-      toast.success("Product added successfully", {
+      toast.success("Product added successfully, redirecting...", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -123,7 +122,7 @@ const AddProductForm = () => {
       });
 
       setTimeout(() => {
-        handleClearForm();
+        redirect("/admin/productlist");
       }, 3000);
     } catch (error) {
       console.error("Error creating product:", error);

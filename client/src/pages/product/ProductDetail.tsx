@@ -24,7 +24,6 @@ const ProductDetail = () => {
     {} as FormProductType
   );
   const { id } = useParams();
-  // console.log("id", id);
 
   const getProductDetail = async () => {
     try {
@@ -35,8 +34,6 @@ const ProductDetail = () => {
       console.log(err);
     }
   };
-
-  console.log("productDetail", productDetail);
 
   useEffect(() => {
     getProductDetail();
@@ -50,7 +47,6 @@ const ProductDetail = () => {
   const handleDecreaseQuantity = () => {
     setQuantity((prev) => prev - 1);
   };
-  // console.log("quantity", quantity);
 
   return (
     <>

@@ -38,7 +38,6 @@ const EditProductForm = () => {
     tag: [],
     stock: 0,
   });
-  // console.log(data);
 
   const { id } = useParams();
 
@@ -55,8 +54,6 @@ const EditProductForm = () => {
       })
       .catch((err) => console.log(err));
   };
-
-  // console.log("fileold", fileold);
 
   useEffect(() => {
     loadData(id);
@@ -79,7 +76,6 @@ const EditProductForm = () => {
   };
 
   const handleFileChange = (files: UploadFile[]) => {
-    console.log(files);
     setFileList(files);
     if (files.length > 0 && files[0].originFileObj) {
       setData({ ...data, file: files[0].originFileObj as File });
@@ -117,14 +113,9 @@ const EditProductForm = () => {
     }
   };
 
-  // console.log("data.file", data.file);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // console.log(data);
-    // console.log(fileold);
-    // console.log("fileold", fileold);
-
     const formWithImageData = new FormData();
     formWithImageData.append("name", data.name);
     formWithImageData.append("detail", data.detail);

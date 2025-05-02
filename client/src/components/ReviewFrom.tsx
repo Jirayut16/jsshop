@@ -57,7 +57,6 @@ const ReviewFrom = () => {
       [e.target.name]: e.target.value,
     });
   };
-  console.log(form);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,7 +69,6 @@ const ReviewFrom = () => {
       comment: form.comment,
       date: new Intl.DateTimeFormat("en-US").format(new Date()).toString(),
     };
-    console.log("reviewData", reviewData);
 
     try {
       createReview(reviewData)
@@ -117,7 +115,6 @@ const ReviewFrom = () => {
   const getOneReview = async () => {
     try {
       getReview(id).then((res) => {
-        console.log("res", res.data);
         setReviewOneProduct(res.data?.reviews.reviews);
       });
     } catch (error) {
@@ -127,8 +124,6 @@ const ReviewFrom = () => {
   const getOneReviewPagination = async () => {
     try {
       getReviewPagination(id, page, pageSize).then((res) => {
-        console.log("res", res.data);
-
         setReviewPagination(res.data?.reviewsPaginated);
         setTotal(res.data.pagination.totalReviews);
       });
@@ -136,9 +131,6 @@ const ReviewFrom = () => {
       console.log(error);
     }
   };
-
-  // console.log("reviewOneProduct", reviewOneProduct);
-  // console.log("reviewPagination", reviewPagination);
 
   //delete review
   const handleDelete = async (id: string, reviewId: string) => {
@@ -168,7 +160,6 @@ const ReviewFrom = () => {
   const showEditModal = (review: ReviewOneProductType, isEdit: boolean) => {
     document.body.style.overflow = "hidden";
     document.body.style.opacity = "0.5";
-    console.log("review", review);
     setEditing(isEdit ? true : false);
     setSelectedReview({
       comment: review.comment,

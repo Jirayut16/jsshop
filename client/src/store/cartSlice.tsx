@@ -31,7 +31,6 @@ export const saveToCart = createAsyncThunk(
         items,
       }
     );
-    console.log("response.data saveto cart", response.data);
     return response.data;
   }
 );
@@ -41,7 +40,6 @@ export const fetchCart = createAsyncThunk(
     const response = await axios.get(
       import.meta.env.VITE_API + "/get-cart/" + userId
     );
-    console.log("response.data getcart", response.data);
     return response.data;
   }
 );
@@ -52,7 +50,6 @@ export const removeItemFromCart = createAsyncThunk(
     const response = await axios.delete(
       import.meta.env.VITE_API + `/remove-item/${userId}/${productId}`
     );
-    console.log("response.data deleteitem", response.data.deleteProductId);
     return response.data.deleteProductId;
   }
 );
@@ -72,7 +69,6 @@ export const updateQuantity = createAsyncThunk(
       import.meta.env.VITE_API + `/update-quantity/${userId}/${productId}`,
       { amount }
     );
-    console.log("response.data updatequantity", response.data);
     return response.data;
   }
 );
@@ -83,7 +79,6 @@ export const clearCart = createAsyncThunk(
     const response = await axios.put(
       import.meta.env.VITE_API + `/clear-cart/${userId}`
     );
-    // console.log("response.data clearcart", response.data);
     return response.data;
   }
 );
@@ -131,8 +126,7 @@ export const cartSlice = createSlice({
       .addCase(updateQuantity.fulfilled, (state, action) => {
         state.status = "succeeded";
         const { productId, quantity } = action.payload;
-        // console.log("productId", productId);
-        // console.log("quantity", quantity);
+
         const findItem = state.items.find(
           (item) => item.productId === productId
         );

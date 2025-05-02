@@ -34,7 +34,6 @@ const useAddToCart = ({
         theme: "light",
         transition: Bounce,
       });
-      console.log("Dispatching:", productToAdd);
     }
   };
 

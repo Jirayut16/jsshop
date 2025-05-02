@@ -44,12 +44,9 @@ export default function Register() {
       confirmPassword: data.get("confirmPassword"),
     };
 
-    console.log("registerData", registerData);
-
     register(registerData)
       .then((res) => {
         console.log(res);
-        // alert(res.data);
         toast.success(res.data, {
           position: "top-center",
           autoClose: 2000,

@@ -31,7 +31,6 @@ const Order = () => {
   useEffect(() => {
     getOrder();
   }, []);
-  console.log(orders);
   orders.map((index) => console.log(index.item));
 
   return (

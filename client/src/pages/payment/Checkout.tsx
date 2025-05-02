@@ -16,8 +16,6 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE);
 const Checkout = () => {
   const MdToken = localStorage.getItem("token");
   const { orderid, orderLatestId } = useParams(); //latest order id ที่ส่งมาจากหน้า confirm ไปหา order ใน database
-  console.log("orderId", orderid);
-  console.log("orderLatestId", orderLatestId);
   const [loading, setLoading] = useState(false);
   new Promise((resolve) => {
     setTimeout(() => {
@@ -28,7 +26,6 @@ const Checkout = () => {
   const fetchClientSecret = async () => {
     try {
       const res = await checkout(MdToken, orderid, orderLatestId);
-      console.log("res co", res);
       return res.data.clientSecret;
     } catch (error) {
       console.log(error);

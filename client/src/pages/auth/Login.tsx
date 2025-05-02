@@ -55,14 +55,13 @@ export default function Login() {
     setLoading(true);
     loadingButton().then(() => setLoading(false));
     const data = new FormData(event.currentTarget);
-    console.log(data);
 
-    const tam = {
+    const loginData = {
       name: data.get("name"),
       password: data.get("password"),
     };
 
-    login(tam)
+    login(loginData)
       .then((res) => {
         console.log(res);
         toast.success(`User  ${res.data.payload.user.user}  login success !!`, {
@@ -116,7 +115,6 @@ export default function Login() {
   };
 
   const responseFacebook = async (response: any) => {
-    console.log("res login fb", response);
     await loginFacebook(response)
       .then((res) => {
         toast.success(

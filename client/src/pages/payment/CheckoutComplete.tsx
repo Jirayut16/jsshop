@@ -14,7 +14,6 @@ const CheckoutComplete = () => {
   const [status, setStatus] = useState(null);
   const dispatch = useDispatch<AppDispatch>();
   const userId = getUserIdFromToken();
-  console.log("orderid" + orderid);
 
   useEffect(() => {
     fetchPayment();
@@ -23,7 +22,6 @@ const CheckoutComplete = () => {
   const fetchPayment = async () => {
     try {
       const res = await checkoutStatus(token, session, orderid);
-      console.log("res checkout complete", res);
       setStatus(res.data.status);
     } catch (error) {
       console.log(error);

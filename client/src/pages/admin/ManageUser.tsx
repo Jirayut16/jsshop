@@ -21,7 +21,6 @@ type Data = {
 const ManageUser = () => {
   const [data, setData] = useState<Data[]>([]);
   const user = useSelector((state: RootState) => state.user);
-  console.log("manageuser", user);
 
   useEffect(() => {
     loadData(user.user.token);
@@ -34,7 +33,6 @@ const ManageUser = () => {
       })
       .catch((err) => console.log(err));
   };
-  console.log(data);
 
   const roleUser = ["user", "admin"];
 
@@ -42,7 +40,6 @@ const ManageUser = () => {
     id: string,
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    console.log(id, e.target.value);
     const value = {
       id: id,
       role: e.target.value,

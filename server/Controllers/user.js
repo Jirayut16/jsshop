@@ -34,7 +34,6 @@ export const changeRole = async (req, res) => {
 export const remove = async (req, res) => {
   try {
     const id = req.params.id;
-    console.log("id remove", id);
     const removed = await User.findOneAndDelete({ _id: id }).exec();
     res.send(removed);
   } catch (err) {

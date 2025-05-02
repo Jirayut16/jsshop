@@ -6,7 +6,6 @@ import { RootState } from "../store/store";
 
 const UserRoutes = () => {
   const user = useSelector((state: RootState) => state.user);
-  console.log("userRoute", user);
 
   //check ถ้าไม่ได้ login ให้ไป login
 

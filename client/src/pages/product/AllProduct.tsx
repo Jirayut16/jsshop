@@ -66,7 +66,6 @@ const AllProduct = () => {
       checkValue.every((value) => item.category.includes(value)) &&
       (gender ? item.gender === gender : true)
   );
-  console.log(filteredProduct);
 
   return (
     <>

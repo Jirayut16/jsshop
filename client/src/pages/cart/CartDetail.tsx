@@ -33,8 +33,6 @@ const CartDetail = () => {
     );
   };
 
-  // console.log("cart item", cart);
-
   const getTotalPrice = () => {
     const total = cart.items.reduce(
       (acc, item) => acc + item.price * item.quantity,
@@ -48,7 +46,6 @@ const CartDetail = () => {
       includedTax: formatCurrency(includedTax),
     };
   };
-  console.log("cart page", cart);
 
   return (
     <>

@@ -12,7 +12,6 @@ export const order = async (req, res) => {
 
     let order = await Order.findOne({ cartId: id });
     let cart = await Cart.findOne({ _id: id });
-    // console.log("cart at confirm", cart);
 
     let total = cart.items.reduce(
       (acc, item) => acc + item.price * item.quantity,

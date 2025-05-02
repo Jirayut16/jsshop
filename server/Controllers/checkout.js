@@ -55,7 +55,6 @@ export const checkout = async (req, res) => {
         email: getOrder.email,
         metadata: { order_id: "" + orderIdToPayment._id },
       });
-      console.log("createCustomer", createCustomer);
     }
 
     res.send({ clientSecret: session.client_secret });
@@ -67,10 +66,7 @@ export const checkout = async (req, res) => {
 export const checkoutStatus = async (req, res) => {
   try {
     const { session_id, order_id } = req.params;
-
     const session = await stripe.checkout.sessions.retrieve(session_id);
-    // console.log("req params session id", session_id);
-    // console.log("session", session);
     const orderId = session.metadata.order_id;
 
     if (session.status !== "complete" || !orderId) {
@@ -79,8 +75,6 @@ export const checkoutStatus = async (req, res) => {
       });
     }
     let getOrder = await Order.findOne({ _id: order_id }).exec();
-    console.log("getOrder", getOrder);
-
     const result = await Order.findOneAndUpdate(
       {
         _id: getOrder._id,
@@ -93,7 +87,6 @@ export const checkoutStatus = async (req, res) => {
       },
       { new: true }
     );
-    console.log("result", result);
 
     res.json({ message: "Payment success", status: session.status });
   } catch (error) {

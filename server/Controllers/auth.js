@@ -6,7 +6,6 @@ export const register = async (req, res) => {
   try {
     //1.check user
     const { name, password, confirmPassword } = req.body;
-    // console.log(`register data from client`, req.body);
 
     var user = await User.findOne({ name });
     if (user) {
@@ -36,7 +35,6 @@ export const register = async (req, res) => {
     });
     user.password = await bcrypt.hash(password, salt);
     user.confirmPassword = await bcrypt.hash(confirmPassword, salt);
-    // console.log("register detail", user);
 
     //3.save to db
     await user.save();
@@ -65,7 +63,6 @@ export const login = async (req, res) => {
           role: user.role,
         },
       };
-      // console.log("payloadlogin", payload);
 
       //3.generate token
       jwt.sign(payload, "jwtSecret", { expiresIn: "1d" }, (err, token) => {
@@ -106,7 +103,6 @@ export const loginLine = async (req, res) => {
         displayName: user.displayName,
       },
     };
-    // console.log("payloadline", payload);
 
     // 3.generate token
     jwt.sign(payload, "jwtSecret", { expiresIn: "1d" }, (err, token) => {
@@ -144,7 +140,6 @@ export const loginFacebook = async (req, res) => {
         displayName: user.displayName,
       },
     };
-    // console.log("payloadfacebook", payload);
 
     // 3.generate token
     jwt.sign(payload, "jwtSecret", { expiresIn: "1d" }, (err, token) => {
@@ -160,7 +155,6 @@ export const loginFacebook = async (req, res) => {
 
 export const currentUser = async (req, res) => {
   try {
-    console.log("current user", req.user);
     const user = await User.findOne({ name: req.user.user })
       .select("-password") //ไม่เอา password ไม่ส่งไป
       .exec();

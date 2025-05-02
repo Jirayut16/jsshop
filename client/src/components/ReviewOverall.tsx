@@ -25,7 +25,6 @@ const ReviewOverall = ({
     acc[item.rating] = (acc[item.rating] || 0) + 1;
     return acc;
   }, {} as Record<number, number>);
-  // console.log("ratingCounts", ratingCounts);
 
   //  ค่าเฉลี่ยของ rating 1-5 จากทั้งหมด
   const getRatingCountPercentage = (rating: number) => {

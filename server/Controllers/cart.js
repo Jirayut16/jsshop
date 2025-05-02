@@ -15,11 +15,8 @@ export const getCart = async (req, res) => {
 export const createCart = async (req, res) => {
   try {
     const { userId, items } = req.body;
-    // console.log("req.body cart", req.body);
 
     let cart = await Cart.findOne({ userId }).exec();
-    console.log("cart", cart);
-
     if (!cart) {
       cart = new Cart({ userId, items });
       await cart.save();
@@ -46,7 +43,6 @@ export const createCart = async (req, res) => {
 export const removeItem = async (req, res) => {
   try {
     const { id, productId } = req.params;
-    // console.log("req.params", req.params);
     const cart = await Cart.findOneAndUpdate(
       { userId: id },
       { $pull: { items: { productId: productId } } },
@@ -70,8 +66,7 @@ export const updateQuantity = async (req, res) => {
   try {
     const { id, productId } = req.params;
     const { amount } = req.body;
-    console.log("req.params edit", req.params);
-    console.log("req.body edit", req.body);
+
     const cart = await Cart.findOneAndUpdate(
       { userId: id, "items.productId": productId },
       { $inc: { "items.$.quantity": amount } },
@@ -94,7 +89,6 @@ export const updateQuantity = async (req, res) => {
 export const clearCart = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("req.params", req.params);
     const cart = await Cart.findOneAndUpdate(
       { userId: id },
       { $set: { items: [] } },

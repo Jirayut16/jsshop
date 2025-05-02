@@ -19,13 +19,10 @@ export const auth = async (req, res, next) => {
 
 export const adminCheck = async (req, res, next) => {
   try {
-    console.log("admincheck", req.user.user);
-
     const userAdmin = await User.findOne({ name: req.user.user })
       .select("-password")
       .exec();
     //ถ้าไม่ใช้ denied ถ้าใช่ next ผ่าน middleware
-    console.log("userAdmin", userAdmin);
 
     if (userAdmin.role !== "admin") {
       res.status(400).send("admin access denied!!");

@@ -30,8 +30,6 @@ const PublicHeader = ({ classname }: { classname: string }) => {
     dispatch(fetchCart({ userId: userId ?? "" }));
   }, [dispatch, userId, cart?.items?.length]);
 
-  // console.log("cart header", cart);
-
   const navigate = useNavigate();
 
   const handleLogout = () => {

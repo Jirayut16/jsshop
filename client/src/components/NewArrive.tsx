@@ -41,17 +41,16 @@ const NewArrive = () => {
   }, []);
 
   const hoverImage = [
-    { image: "/newArrive1.jpg" },
-    { image: "/newArrive2.jpg" },
     { image: "/newArrive3.jpg" },
     { image: "/newArrive4.jpg" },
+    { image: "/newArrive2.jpg" },
+    { image: "/newArrive1.jpg" },
   ];
   const hoverImageToChangeLeave = (index: number) => {
     const newHover = [...hover];
     newHover[index] = false;
     setHover(newHover);
   };
-  console.log("data", data);
 
   return (
     <div className="container mx-auto relative px-12 lg:px-10 xl:px-0">

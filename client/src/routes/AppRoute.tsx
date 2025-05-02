@@ -40,7 +40,6 @@ const AppRoute = () => {
   const dispatch = useDispatch();
   //ดึง token ออกมาจาก localStorage แล้ว dispatch ใส่ใน redux login state
   const token = localStorage.getItem("token");
-  console.log("token: " + token);
   currentUser(token)
     .then((res) => {
       console.log(res);

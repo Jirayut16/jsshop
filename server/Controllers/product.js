@@ -1,5 +1,5 @@
 import { Product } from "../Model/Product.js";
-import fs from "fs";
+import { v2 as cloudinary } from "cloudinary";
 
 export const list = async (req, res) => {
   try {
@@ -26,8 +26,6 @@ export const read = async (req, res) => {
 export const create = async (req, res) => {
   try {
     var data = req.body;
-    console.log("Create product detail", req.body);
-
     if (!req.file) {
       return res.status(400).json({ error: "No file uploaded" });
     }
@@ -70,40 +68,56 @@ export const update = async (req, res) => {
     const tag = JSON.parse(newData.tag);
     newData.category = category;
     newData.tag = tag;
+    if (req.file) {
+      const existingProduct = await Product.findById(id);
+      if (!existingProduct) {
+        return res.status(404).json({ error: "Product not found" });
+      }
 
-    // console.log("category", category);
-    // console.log("tag", tag);
-    // console.log("Edit product detail", req.body);
-    // console.log("Edit file", req.file);
+      if (existingProduct.file) {
+        const urlParts = existingProduct.file.split("/");
+        const publicId = `${urlParts[urlParts.length - 2]}/${
+          urlParts[urlParts.length - 1].split(".")[0]
+        }`;
+        await cloudinary.uploader
+          .destroy(publicId, { resource_type: "image" })
+          .catch((err) => console.error("Failed to delete old image:", err));
+      }
 
-    if (typeof req.file !== "undefined") {
-      newData.file = req.file.filename;
-      await fs.unlink(`./uploads/${newData.fileold}`, (err) =>
-        err ? console.log(err) : console.log("Edit file success")
-      );
+      newData.file = req.file.path; // Cloudinary URL
     }
-
+    // Validation
     if (newData.discountPercent >= 100) {
       return res.status(400).json({ error: "Discount must be less than 100%" });
-    } else if (newData.category.length === 0 || newData.tag.length === 0) {
+    }
+    if (newData.category.length === 0 || newData.tag.length === 0) {
       return res.status(400).json({ error: "Please select category and tag" });
-    } else if (
-      newData.gender === "" ||
-      newData.size === "" ||
-      newData.color === ""
-    ) {
+    }
+    if (newData.gender === "" || newData.size === "" || newData.color === "") {
       return res
         .status(400)
-        .json({ error: "Please select gender, size and color" });
-    } else if (newData.stock <= 0) {
+        .json({ error: "Please select gender, size, and color" });
+    }
+    if (parseInt(newData.stock) <= 0) {
       return res.status(400).json({ error: "Stock must be greater than 0" });
-    } else if (newData.price <= 0) {
+    }
+    if (parseInt(newData.price) <= 0) {
       return res.status(400).json({ error: "Price must be greater than 0" });
     }
+
+    // อัปเดต product ใน MongoDB
     const updated = await Product.findOneAndUpdate({ _id: id }, newData, {
       new: true,
     }).exec();
-    return res.send(updated);
+
+    if (!updated) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    return res.status(200).json({
+      message: "Product updated successfully",
+      data: updated,
+    });
   } catch (err) {
     console.log(err);
     res.status(400).json({ error: err.message });
@@ -115,14 +129,26 @@ export const remove = async (req, res) => {
   try {
     const id = req.params.id;
     const removed = await Product.findOneAndDelete({ _id: id }).exec();
-    //remove file upload ออกจากโฟล์เดอร์
-    if (removed?.file) {
-      await fs.unlink(`./uploads/${removed.file}`, (err) =>
-        err ? console.log(err) : console.log("Remove file success")
-      );
+    if (!removed) {
+      return res.status(404).json({ error: "Product not found" });
     }
-
-    res.send(removed);
+    //remove file upload ออกจาก cloudinary
+    if (removed.file) {
+      // ดึง public ID จาก URL
+      const urlParts = removed.file.split("/");
+      const publicId = `${urlParts[urlParts.length - 2]}/${
+        urlParts[urlParts.length - 1].split(".")[0]
+      }`; // ได้ ecommerce_Uploads/attq0yyffrocuzxzl8zg
+      await cloudinary.uploader
+        .destroy(publicId, { resource_type: "image" })
+        .catch((err) =>
+          console.error("Failed to delete image from Cloudinary:", err)
+        );
+    }
+    return res.status(200).json({
+      message: "Product deleted successfully",
+      data: removed,
+    });
   } catch (err) {
     console.log(err);
     res.status(400).json({ error: err.message });

@@ -14,7 +14,6 @@ import {
 
 const ProductList = () => {
   const [data, setData] = useState<FormProductType[]>([]);
-  console.log("table", data);
 
   const loadData = async () => {
     try {

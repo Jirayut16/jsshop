@@ -33,7 +33,6 @@ const HomePageAdmin = () => {
     try {
       setLoading(true);
       const res = await getDashboard();
-      console.log("res dashboard", res.data);
       setDashboardData(res.data);
       setLoading(false);
     } catch (error) {

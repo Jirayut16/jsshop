@@ -6,9 +6,6 @@ import { RootState } from "../store/store";
 
 const AdminRoute = ({ children }: { children: React.ReactNode }) => {
   const user = useSelector((state: RootState) => state.user);
-  console.log("user" + user.user);
-  console.log(user.user.token);
-  console.log(user.user.role);
   const [ok, setOk] = useState(false);
 
   useEffect(() => {
@@ -24,7 +21,6 @@ const AdminRoute = ({ children }: { children: React.ReactNode }) => {
         });
     }
   }, [user]);
-  console.log(ok);
 
   return ok ? <div className="app">{children}</div> : <NotFound />;
 };

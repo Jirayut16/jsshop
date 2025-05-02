@@ -25,7 +25,6 @@ const ProductDetailDiscount = () => {
     {} as FormProductType
   );
   const { id } = useParams();
-  // console.log("id", id);
 
   const getProductDetail = async () => {
     try {
@@ -36,8 +35,6 @@ const ProductDetailDiscount = () => {
       console.log(err);
     }
   };
-
-  console.log("productDetail", productDetail);
 
   useEffect(() => {
     getProductDetail();
@@ -51,7 +48,6 @@ const ProductDetailDiscount = () => {
   const handleDecreaseQuantity = () => {
     setQuantity((prev) => prev - 1);
   };
-  // console.log("quantity", quantity);
   const getDiscount = (price: number, discount: number) => {
     const discountPrice = (price * discount) / 100;
     const finalPrice = price - discountPrice;
