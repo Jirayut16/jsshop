@@ -35,6 +35,8 @@ import { ThemeProvider } from "../components/ThemeContext";
 // react toastify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Contact from "../pages/contact/Contact";
+import About from "../pages/about/About";
 
 const AppRoute = () => {
   const dispatch = useDispatch();
@@ -61,8 +63,8 @@ const AppRoute = () => {
           <Routes>
             <Route path="/" element={<MainLayout />}>
               <Route index element={<HomePageUser />}></Route>
-              <Route path="/contact" element={<HomePageUser />}></Route>
-              <Route path="/about" element={<HomePageUser />}></Route>
+              <Route path="/contact" element={<Contact />}></Route>
+              <Route path="/about" element={<About />}></Route>
               <Route path="/product/:id" element={<ProductDetail />}></Route>
               <Route
                 path="/productdiscount/:id"
