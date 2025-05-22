@@ -20,8 +20,8 @@ import Checkout from "../pages/payment/Checkout";
 import ConfirmOrder from "../pages/payment/ConfirmOrder";
 import CheckoutComplete from "../pages/payment/CheckoutComplete";
 import Order from "../pages/user/Order";
-import Contact from "../pages/contact/Contact.tsx";
-import About from "../pages/about/About.tsx";
+import AboutPage from "../pages/about/AboutPage";
+import ContactPage from "../pages/contact/ContactPage";
 
 //Routes
 import UserRoutes from "./UserRoutes";
@@ -63,8 +63,8 @@ const AppRoute = () => {
           <Routes>
             <Route path="/" element={<MainLayout />}>
               <Route index element={<HomePageUser />}></Route>
-              <Route path="/contact" element={<Contact />}></Route>
-              <Route path="/about" element={<About />}></Route>
+              <Route path="/contact" element={<ContactPage />}></Route>
+              <Route path="/about" element={<AboutPage />}></Route>
               <Route path="/product/:id" element={<ProductDetail />}></Route>
               <Route
                 path="/productdiscount/:id"
