@@ -20,6 +20,8 @@ import Checkout from "../pages/payment/Checkout";
 import ConfirmOrder from "../pages/payment/ConfirmOrder";
 import CheckoutComplete from "../pages/payment/CheckoutComplete";
 import Order from "../pages/user/Order";
+import Contact from "../pages/contact/Contact.tsx";
+import About from "../pages/about/About.tsx";
 
 //Routes
 import UserRoutes from "./UserRoutes";
@@ -35,8 +37,6 @@ import { ThemeProvider } from "../components/ThemeContext";
 // react toastify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Contact from "../pages/contact/Contact";
-import About from "../pages/about/About";
 
 const AppRoute = () => {
   const dispatch = useDispatch();
