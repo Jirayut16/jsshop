@@ -18,3 +18,15 @@ const storage = new CloudinaryStorage({
   },
 });
 export const upload = multer({ storage: storage }).single("file");
+
+const profilePicture = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "user_profile_picture", // โฟลเดอร์ใน Cloudinary
+    allowed_formats: ["jpg", "png", "jpeg", "webp"],
+    transformation: [{ width: 200, height: 200, crop: "limit" }], // Optimize ขนาดรูป
+  },
+});
+export const uploadProfilePicture = multer({
+  storage: profilePicture,
+}).single("file");

@@ -22,6 +22,7 @@ import CheckoutComplete from "../pages/payment/CheckoutComplete";
 import Order from "../pages/user/Order";
 import AboutPage from "../pages/about/AboutPage";
 import ContactPage from "../pages/contact/ContactPage";
+import Profile from "../pages/user/Profile";
 
 //Routes
 import UserRoutes from "./UserRoutes";
@@ -49,6 +50,7 @@ const AppRoute = () => {
         login({
           name: res.data.name,
           role: res.data.role,
+          picture: res.data.picture,
           token: token,
         })
       );
@@ -73,6 +75,7 @@ const AppRoute = () => {
               <Route path="/allproduct" element={<AllProduct />}></Route>
               {/* user login */}
               <Route element={<UserRoutes />}>
+                <Route path="/myprofile" element={<Profile />}></Route>
                 <Route path="/mycart" element={<CartDetail />}></Route>
                 <Route path="/my-orders" element={<Order />}></Route>
                 <Route

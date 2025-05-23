@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface CounterState {
   value: string;
-  user: { name: string; role: string; token: string };
+  user: { name: string; role: string; token: string; picture?: string };
 }
 
 const initialState: CounterState = {
   value: "",
-  user: { name: "", role: "", token: "" },
+  user: { name: "", role: "", token: "", picture: "" },
 };
 
 export const userSlice = createSlice({
@@ -19,7 +19,7 @@ export const userSlice = createSlice({
       state.user = action.payload;
     },
     logout: (state) => {
-      state.user = { name: "", role: "", token: "" };
+      state.user = { name: "", role: "", token: "", picture: "" };
       localStorage.clear();
     },
   },

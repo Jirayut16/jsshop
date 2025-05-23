@@ -143,10 +143,12 @@ const PublicHeader = ({ classname }: { classname: string }) => {
               <>
                 <hr className="border border-gray-300 w-5/6 md:hidden" />
                 <div className="md:hidden text-lg w-full flex flex-col justify-center items-center gap-2">
-                  <li>
-                    <ProfileOutlined className="me-2" />
-                    My Profile
-                  </li>
+                  <Link to={"/myprofile"}>
+                    <li>
+                      <ProfileOutlined className="me-2" />
+                      My Profile
+                    </li>
+                  </Link>
                   <Link to={"/my-orders"}>
                     <li>
                       <HistoryOutlined className="me-2" />

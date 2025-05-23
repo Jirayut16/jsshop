@@ -21,3 +21,19 @@ export const removeUser = async (authtoken: string, id: string) =>
   await axios.delete(import.meta.env.VITE_API + `/user/${id}`, {
     headers: { authtoken },
   });
+
+export const profilePicture = async (
+  authtoken: string,
+  userId: string,
+  data: FormData
+) =>
+  await axios.put(
+    import.meta.env.VITE_API + `/profile-picture/${userId}`,
+    data,
+    { headers: { authtoken } }
+  );
+
+export const getCurrentUser = async (authtoken: string, id: string) =>
+  await axios.get(import.meta.env.VITE_API + `/current-user/${id}`, {
+    headers: { authtoken },
+  });
