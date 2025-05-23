@@ -2,18 +2,20 @@ import { useState } from "react";
 import UploadFileButton from "../../components/UplaodFileButton";
 import { UploadFile } from "antd";
 import { profilePicture } from "../../functions/user";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { getUserIdFromToken } from "../../utils/userIdDecode";
 import { Bounce, toast } from "react-toastify";
 import PublicHeader from "../../layout/PublicHeader";
 import { useNavigate } from "react-router-dom";
+import { updateProfilePicture } from "../../store/userSlice";
 type FilePicture = {
   file?: string | File;
 };
 
 const Profile = () => {
   const user = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
   const userID = getUserIdFromToken();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState<FilePicture>({
@@ -54,11 +56,12 @@ const Profile = () => {
         theme: "light",
         transition: Bounce,
       });
+      const newPictureURL = res.data.user.picture;
       setLoading(false);
       setFileList([]);
       setForm({ file: undefined });
+      dispatch(updateProfilePicture(newPictureURL));
       navigate("/");
-      window.location.reload();
     } catch (error) {
       console.error("Error uploading file:", error);
     }

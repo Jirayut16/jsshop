@@ -22,11 +22,14 @@ export const userSlice = createSlice({
       state.user = { name: "", role: "", token: "", picture: "" };
       localStorage.clear();
     },
+    updateProfilePicture: (state, action) => {
+      state.user.picture = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { login, logout } = userSlice.actions;
+export const { login, logout, updateProfilePicture } = userSlice.actions;
 
 // Reducer ที่ export ออก
 export default userSlice.reducer;
